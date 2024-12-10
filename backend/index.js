@@ -8,6 +8,7 @@ app.use(cors());
 app.get('/api/joke', async (req, res) => {
     try {
         const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
+        console.log(response.data);
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch joke' });
