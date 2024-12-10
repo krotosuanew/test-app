@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -16,8 +18,8 @@ export default {
   methods: {
     async fetchJoke() {
       try {
-        const response = await fetch('http://localhost:3000/api/joke');
-        this.joke = await response.json();
+        const response = await axios.get(`${import.meta.env.VITE_DOMAIN}/api/joke`);
+        this.joke = response.data;
       } catch (error) {
         console.error('Failed to fetch joke:', error);
       }
